@@ -6,6 +6,7 @@ class Posts(models.Model):
     title = models.CharField('Название', max_length=100)
     anons = models.CharField('Анонс', max_length=255)
     text = models.TextField('Текст')
+    image = models.ImageField(upload_to="posts_image", verbose_name="Картинка")
     datetime = models.DateTimeField('Дата публикации')
     
     def __str__(self) -> str:

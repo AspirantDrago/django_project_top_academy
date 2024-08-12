@@ -36,15 +36,19 @@ class PostsDeleteView(DeleteView):
 
 def create(request):
     error = ''
+
+    form = PostsForm()
+        
+
     if request.POST:
         form = PostsForm(request.POST)
+        
         if form.is_valid():
             form.save()
             return redirect('home')
-        else:
-            error = "неправильная форма"
+        else:           
+            error = form.errors
         
-    form = PostsForm()
     
     data = {
         'form':form,
