@@ -1,0 +1,18 @@
+<div class="flex bg-yellow-400 gap-3">
+  {% for i in historyes %}
+    <div class="bg-green-300 m-5">
+      <div>
+        <h3>{{ i.title }}</h3>
+      </div>
+      <div>
+        <h3>{{ i.anons }}</h3>
+      </div>
+      <div>
+        <h3>{{ i.full_story }}</h3>
+      </div>
+      <div>
+        <h3>{{ i.datetime }}</h3>
+      </div>
+    </div>
+  {% endfor %}
+</div>

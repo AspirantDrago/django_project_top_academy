@@ -1,0 +1,26 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <div>
+    <a href="{% url 'posts_create' %}" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">создать запись</a>
+  </div>
+  {% include 'posts/post_search.html' %}
+  {% if posts %}
+    {% for post in posts %}
+      <div class="flex gap-2 bg-red-600 m-5 p-2">
+        <h3>{{ post.title }} - {{ post.id }}</h3>
+        <h3>{{ post.anons }}</h3>
+        <h3>{{ post.date }}</h3>
+      </div>
+      <div>{{ post.text }}</div>
+      <a href="{% url 'post_detail' post.id %}" class="block mb-4 w-full rounded-full bg-blue-500 text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-blue-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0">подробнее</a>
+
+    {% endfor %}
+  {% else %}
+    ничего не найдено
+  {% endif %}
+{% endblock %}
