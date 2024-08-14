@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Posts
 from .forms import PostsForm
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 
 # Create your views here.
 
@@ -36,19 +36,15 @@ class PostsDeleteView(DeleteView):
 
 def create(request):
     error = ''
-
-    form = PostsForm()
-        
-
     if request.POST:
-        form = PostsForm(request.POST)
+        form = PostsForm(request.POST, request.FILES)
         
         if form.is_valid():
             form.save()
             return redirect('home')
         else:           
             error = form.errors
-        
+    form = PostsForm()        
     
     data = {
         'form':form,
