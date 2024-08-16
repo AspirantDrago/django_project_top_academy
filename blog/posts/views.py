@@ -30,24 +30,12 @@ class PostUpdateView(UpdateView):
 class PostsDeleteView(DeleteView):
     model = Posts
     success_url = '/posts/'
-    template_name = "posts/delete.html"
-    
+    template_name = "posts/delete.html"    
 
 
-def create(request):
-    error = ''
-    if request.POST:
-        form = PostsForm(request.POST, request.FILES)
-        
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:           
-            error = form.errors
-    form = PostsForm()        
-    
-    data = {
-        'form':form,
-        'error':error
-    }
-    return render(request, 'posts/create.html', data)
+class CreatePost(CreateView):
+    model = Posts
+    success_url = '/posts/'
+    template_name = "posts/create.html"
+    form_class = PostsForm
+
