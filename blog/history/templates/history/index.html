@@ -10,4 +10,21 @@
   {% if historyes %}
     {% include 'history/all_historyes.html' %}
   {% endif %}
+  {% if history %}
+    это 1 история<br />
+    <div class="bg-green-300 m-5">
+      <div>
+        <h3>{{ history.title }}</h3>
+      </div>
+      <div>
+        <h3>{{ history.anons }}</h3>
+      </div>
+      <div>
+        <h3>{{ history.full_story }}</h3>
+      </div>
+      <div>
+        <h3>{{ history.datetime }}</h3>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

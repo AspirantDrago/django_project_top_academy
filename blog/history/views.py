@@ -24,3 +24,15 @@ def create(request):
         'form':form,
     }
     return render(request, 'history/create.html', context)
+
+def show(request, pk):
+    try:
+        history = History.objects.get(id=pk)
+        context = {}
+        context.update({'history':history})
+        return render(request, 'history/index.html', context)
+    except:
+        return redirect('histories:index')
+
+
+

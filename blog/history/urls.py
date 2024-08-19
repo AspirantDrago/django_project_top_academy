@@ -7,5 +7,7 @@ app_name = 'history'
 urlpatterns = [
     path('', index, name='index'),
     path('create', create, name='create'),
+    path('<int:pk>', show, name='show'),
+
 
 ]
