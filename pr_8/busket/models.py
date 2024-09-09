@@ -3,14 +3,15 @@ from customer.models import Customer
 from salesman.models import Salesman
 from products.models import Products
 
-
-
 # Create your models here.
 
 class Busket(models.Model):
     salesman = models.ForeignKey(Salesman, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    completed = models.BooleanField('Оформлено?', default=bool)
+
+
+class BusketProducts(models.Model):
+    busket = models.ForeignKey(Busket, related_name="products", on_delete=models.CASCADE)
     products = models.ForeignKey(Products, on_delete=models.CASCADE)
-
-
-
+    count = models.IntegerField('Количество товара')

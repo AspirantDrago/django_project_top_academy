@@ -5,5 +5,5 @@ from django.db import models
 class Customer(models.Model):
     name = models.CharField('Имя', max_length=150, blank=True)
     last_name = models.CharField('Фамилия', max_length=150, blank=True)
-    number = models.IntegerField('Номер телефона', blank=True)
-    email = models.CharField('E-mail', max_length=150, blank=True)
+    number = models.IntegerField('Номер телефона', blank=True, unique=True, db_index=True)
+    email = models.CharField('E-mail', max_length=150, blank=True, unique=True)

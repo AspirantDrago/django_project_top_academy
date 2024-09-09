@@ -4,6 +4,8 @@ import os
 import sys
 
 
+
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pr_8.settings')
@@ -16,6 +18,17 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    
+    if '--update_brands' in sys.argv:
+        from autos.models import Auto
+        
+        with open('brands.txt', encoding='utf-8') as f:
+            for s in map(str.strip, f.readlines()):
+                try:
+                    obj = Auto.objects.create(name=s)
+                    obj.save()
+                except BaseException as e:
+                    print(e)
 
 
 if __name__ == '__main__':
