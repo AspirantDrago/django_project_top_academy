@@ -1,1 +1,2 @@
-Django~=5.1.1
+Django~=5.1
+crispy-bootstrap5~=2024.2
